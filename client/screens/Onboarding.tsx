@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
 import { useNavigation } from '@react-navigation/native';
 
+
 const OnboardingScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const OnboardingScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: 'https://i.pinimg.com/564x/d3/b5/50/d3b550ae11575de009439adc48ab8b9f.jpg' }} // Replace with your image URL
+        source={require('../assets/onboarding.png')}
         style={styles.image}
       />
       <Text style={styles.text}>

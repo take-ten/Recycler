@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
-import HistoryScreen from '../screens/HistoryScreen'; // Ensure the file exists and the path is correct
+import MessageScreen from '../screens/HistoryScreen'; // Ensure the file exists and the path is correct
 import ProfileScreen from '../screens/ProfileScreen';
 import HomeStackNavigator from './HomeStackNavigator'; // Import HomeStackNavigator
 
@@ -37,7 +37,7 @@ export default function BottomTabNavigator() {
           ),
         }}
       />
-      <Tab.Screen name="History" component={HistoryScreen} />
+      <Tab.Screen name="History" component={MessageScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
