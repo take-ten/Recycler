@@ -16,7 +16,9 @@ const RoleScreen = () => {
   const [isCollecteurChecked, setIsCollecteurChecked] = useState(false);
   const dispatch = useDispatch();
   const handleLogin = () => {
-    dispatch(login());
+    // const role = isProviderChecked ? 'Provider' : 'Collecteur';
+    // dispatch(login(role)); // role to be saved in the redux memo
+    dispatch(login())
   };
 
   return (

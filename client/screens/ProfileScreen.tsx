@@ -3,18 +3,22 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, TextInput } fro
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
+// import { handleLogout } from '../store/authActions';
+
+
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
+
     dispatch(logout());
   };
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Logout Icon */}
-      <TouchableOpacity style={styles.logoutIcon} onPress={handleLogout}>
+      <TouchableOpacity style={styles.logoutIcon} onPress={handleLogOut}>
         <Ionicons name="log-out-outline" size={30} color="black" />
       </TouchableOpacity>
 

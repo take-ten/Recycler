@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import React from 'react'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch } from 'react-redux';
-import { login } from '../store/authSlice';
+import {login}  from '../store/authSlice';
+import { handleFacebookLogin , handleGoogleLogin , handleAppleLogin } from '../store/authActions';
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -11,12 +13,19 @@ export default function SignIn() {
   const handleLogin = () => {
     dispatch(login());
   };
-
+  const loginWithGoogle = () => {
+    dispatch<any>(handleGoogleLogin());
+  };
+  const loginWithFacebook = () => {
+    dispatch<any>(handleFacebookLogin());
+  };
+  const handleLoginWithApple=()=>{
+    dispatch<any>(handleAppleLogin());
+  }
+  
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity style={styles.backButton}>
-        <Text style={styles.backButtonText}>{'<'}</Text>
-      </TouchableOpacity> */}
+     
       <Text style={styles.headerText}>Toujours heureux de vous revoir</Text>
       <TextInput style={styles.input} placeholder="Mail ou Tel" />
       <TextInput style={styles.input} placeholder="Votre mot de passe" secureTextEntry={true} />
@@ -29,13 +38,13 @@ export default function SignIn() {
       <Text style={styles.orText}>ou se connecter avec</Text>
       <View style={styles.socialButtons}>
         <TouchableOpacity style={styles.socialButton}>
-          <Text style={styles.socialButtonText}>f</Text>
+        <Icon name="facebook" size={30} color="#3b5998" onPress={loginWithFacebook} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.socialButton}>
-          <Text style={styles.socialButtonText}>G</Text>
+          <Icon name="google" size={30} color="#db4437" onPress={loginWithGoogle}  />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Text style={styles.socialButtonText}>🍎</Text>
+        <TouchableOpacity style={styles.socialButton}>  
+          <Icon name="apple" size={30} color="#000" onPress={handleLoginWithApple} />
         </TouchableOpacity>
       </View>
       <Text style={styles.noAccountText}>Vous n'avez pas de compte ?</Text>
