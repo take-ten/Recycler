@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import { CheckBox } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; // Import useSelector
 import { login } from '../store/authSlice';
 
 
-
-const RoleScreen = () => {
+const RoleScreen: React.FC = () => {
   const navigation = useNavigation();
- 
-
-  const [isProviderChecked, setIsProviderChecked] = useState(false);
-  const [isCollecteurChecked, setIsCollecteurChecked] = useState(false);
+  const [isProviderChecked, setIsProviderChecked] = useState<boolean>(false);
+  const [isCollecteurChecked, setIsCollecteurChecked] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const handleLogin = () => {
-    // const role = isProviderChecked ? 'Provider' : 'Collecteur';
-    // dispatch(login(role)); // role to be saved in the redux memo
-    dispatch(login())
+
+  // Check if user is logged in
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn); // Accessing the authentication state
+
+  const handleRoleSelection = () => {
+    const role = isProviderChecked ? 'Provider' : isCollecteurChecked ? 'Collecteur' : '';
+    
+    if (role === '') {
+      Alert.alert('Erreur', 'Veuillez sélectionner votre rôle.');
+      return;
+    }
+
+    // dispatch(login(role)); // Dispatch login action
+
+    if (role === 'Provider') {
+      navigation.navigate('ProviderDef',{role:role});
+    } else {
+      navigation.navigate('CollectorDef',{role:role});                         // soit on passe le Role comme props , soit par Redux ( a voir avec skander )
+    }
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Back button */}
-      
-
       {/* Centered text and checkboxes */}
       <View style={styles.centerContainer}>
-        <Text style={styles.text}>vous êtes ?</Text>
+        <Text style={styles.text}>Vous êtes ?</Text>
         <View style={styles.checkboxContainer}>
           <CheckBox
             title="Provider"
@@ -60,8 +68,8 @@ const RoleScreen = () => {
       </View>
 
       {/* Bottom button */}
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Enregistrer</Text>
+      <TouchableOpacity style={styles.button} onPress={handleRoleSelection}>
+        <Text style={styles.buttonText}>Suivant</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -71,10 +79,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-  },
-  backButton: {
-    marginTop: 10,
-    marginLeft: 10,
   },
   centerContainer: {
     flex: 1,
