@@ -19,7 +19,6 @@ export default function MapScreen() {
       longitudeDelta: region.longitudeDelta / 2,
     });
   };
-
   const zoomOut = () => {
     setRegion({
       ...region,
@@ -27,7 +26,6 @@ export default function MapScreen() {
       longitudeDelta: region.longitudeDelta * 2,
     });
   };
-
   return (
     <View style={styles.container}>
       <MapView

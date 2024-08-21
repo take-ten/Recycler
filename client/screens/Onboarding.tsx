@@ -12,7 +12,7 @@ const OnboardingScreen = () => {
 
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} >
       <Image
         source={require('../assets/onboarding.png')}
         style={styles.image}

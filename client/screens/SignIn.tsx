@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch } from 'react-redux';
 import {login}  from '../store/authSlice';
 import { handleFacebookLogin , handleGoogleLogin , handleAppleLogin } from '../store/authActions';
+import store from '../store/store';
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -22,6 +23,7 @@ export default function SignIn() {
   const handleLoginWithApple=()=>{
     dispatch<any>(handleAppleLogin());
   }
+  
   
   return (
     <View style={styles.container}>

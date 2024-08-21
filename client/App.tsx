@@ -9,13 +9,13 @@ import { useSelector } from 'react-redux'; // Importing useSelector hook from re
 export default function App() {
   return (
     // Wrapping the app with the Redux Provider to make the store available to all components
-    <Provider store={store}>
+    <Provider store={store} >
       {/* Wrapping the app with NavigationContainer to manage navigation state */}
-      <NavigationContainer>
+      <NavigationContainer >
         {/* Setting the status bar style */}
-        <StatusBar style="auto" />
+        <StatusBar style="auto"/>
         {/* Rendering the AppNavigator component */}
-        <AppNavigator />
+        <AppNavigator/>
       </NavigationContainer>
     </Provider>
   );
@@ -24,7 +24,7 @@ export default function App() {
 // AppNavigator component to conditionally render navigation based on authentication state
 const AppNavigator = () => {
   // Getting the isLoggedIn state from the Redux store
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn );
 
   // If the user is logged in, render BottomTabNavigator, otherwise render OnboardingNavigation
   return isLoggedIn ? <BottomTabNavigator /> : <OnboardingNavigation />;
