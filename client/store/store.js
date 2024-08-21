@@ -6,6 +6,7 @@ const store = configureStore({
   reducer: {
     auth: authReducer, // Adding the authReducer to the store under the 'auth' key
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export default store; // Exporting the configured store as the default export     

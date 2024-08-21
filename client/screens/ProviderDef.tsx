@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, TextInput } from 'react-native';
-import { useDispatch } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
-import { setLocation } from '../store/authSlice'; 
+// import { setLocation } from '../store/authSlice'; 
 // import { Image } from '../assets/uranProv.png';
 import { locations } from '../components/locations';
+import { login } from '../store/authSlice';
+
 
 
 const ProviderDef: React.FC = () => {
-  const [selectedLocation, setSelectedLocation] = useState<string>('');
-  const dispatch = useDispatch();
+  
 
 
-  const handleLocationSelection = () => {
-    if (selectedLocation) {
-      dispatch(setLocation(selectedLocation));
-      // navigation.navigate('ProviderDef');
-      // erreur quand je click sur le bouton confirmer car setLocation n'est pas défini ! avoir avec skander demain nchallah
-      
-      
-    } else {
-      alert('Veuillez sélectionner un lieu.');
-    }
-  };
+
+
 
   return (
 
@@ -37,7 +28,7 @@ const ProviderDef: React.FC = () => {
         <RNPickerSelect
           placeholder={{ label: 'Veuillez sélectionnez un lieu...', value: null }}
           items={locations}
-          onValueChange={(value) => setSelectedLocation(value as string)}
+          // onValueChange={(value) => setSelectedLocation(value as string)}
           style={pickerStyles}
         />
         <TextInput
@@ -51,7 +42,7 @@ const ProviderDef: React.FC = () => {
  
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleLocationSelection}>
+      <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>Confirmer</Text>
       </TouchableOpacity>
     </SafeAreaView>

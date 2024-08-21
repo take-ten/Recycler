@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
-import { setLocation } from '../store/authSlice';
+// import { setLocation } from '../store/authSlice';
 import { locations } from '../components/locations';
 
 
@@ -20,8 +20,8 @@ const CollectorDef: React.FC = () => {
 
   const handleLocationSelection = () => {
     if (selectedLocation) {
-      dispatch(setLocation(selectedLocation)); 
-      dispatch(login(role));
+      // dispatch(setLocation(selectedLocation)); 
+      dispatch(login());
     } else {
       alert('Veuillez sélectionner un lieu.');
     }

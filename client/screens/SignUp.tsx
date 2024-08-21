@@ -2,17 +2,13 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 
 const SignUp = () => {
-
   const navigation = useNavigation();
-
 
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Text style={styles.backButtonText}>{'<'}</Text>
-      </TouchableOpacity> */}
       <Text style={styles.title}>Salut, Inscrivez-vous pour commencer !</Text>
       <TextInput style={styles.input} placeholder="Nom d'utilisateur" />
       <TextInput style={styles.input} placeholder="E-Mail ou Tel" keyboardType="email-address" />
@@ -26,9 +22,7 @@ const SignUp = () => {
         <TouchableOpacity style={styles.socialButton}>
           <Icon name="facebook" size={30} color="#3b5998" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.socialButton}>
-          <Icon name="google" size={30} color="#db4437" />
-        </TouchableOpacity>
+        <GoogleSignInButton />
         <TouchableOpacity style={styles.socialButton}>
           <Icon name="apple" size={30} color="#000" />
         </TouchableOpacity>

@@ -2,10 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: null,
-  isAuthenticated: false,
   isLoggedIn: false,
-  loading: false,
   error: null,
+  location: null,
+  role: null,
+  geoLocation: null,
 };
 
 const authSlice = createSlice({
@@ -13,7 +14,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     signUpStart(state) {
-      state.loading = true;
       state.error = null;
     },
     login(state, action) {
@@ -21,32 +21,36 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     signUpSuccess(state, action) {
-      state.loading = false;
-      state.isAuthenticated = true;
+      state.isLoggedIn = true;
       state.user = action.payload;
     },
     signUpFailure(state, action) {
-      state.loading = false;
       state.error = action.payload;
     },
     signInStart(state) {
-      state.loading = true;
       state.error = null;
     },
     signInSuccess(state, action) {
-      state.loading = false;
-      state.isAuthenticated = true;
       state.user = action.payload;
+      state.isLoggedIn = true;
     },
     signInFailure(state, action) {
-      state.loading = false;
       state.error = action.payload;
     },
     logout(state) {
-      state.isAuthenticated = false;
       state.user = null;
       state.isLoggedIn = false;
     },
+    setLocation(state, action) {
+      state.location = action.payload;
+    },
+    setRole(state, action) {
+      state.role = action.payload;
+    },
+    setGeoLocation(state, action) {
+      state.geoLocation = action.payload;
+    },
+
   },
 });
 
@@ -59,6 +63,9 @@ export const {
   signInFailure,
   logout,
   login,
+  setLocation,
+  setRole,
+  setGeoLocation,
 } = authSlice.actions;
 
 export default authSlice.reducer;
