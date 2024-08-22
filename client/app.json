@@ -23,6 +23,13 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": "yourapp"
+    "scheme": "your-app-scheme",
+    "extra": {
+      "EXPO_CLIENT_ID": "your-expo-client-id",
+      "IOS_CLIENT_ID": "your-ios-client-id",
+      "ANDROID_CLIENT_ID": "888677255335-bv16q01soean1st9rj2mi0eb25uupes9.apps.googleusercontent.com",
+      "WEB_CLIENT_ID": "your-web-client-id",
+      "redirectUri": "https://auth.expo.io/@cikond91/client"
+    }
   }
 }
